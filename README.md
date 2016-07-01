@@ -12,14 +12,12 @@ $ sudo make install
 
 Then it's just a matter of enabling the extension in your php.ini by adding the following line:
 
-```extension=mmap.so```
-
+`extension=mmap.so`
 
 ## Usage
-
 Calling the `mmap_open()` function will return a stream resource that can be used with `fread()`, `fwrite()`, `fseek()`, `fclose()`
 
 ```php
-	//mmap_open($file_name, $block_size, $offset)
+    //mmap_open($file_name, $block_size, $offset)
     $mmap = mmap_open('/dev/mem', 1024, 0);
 ```
