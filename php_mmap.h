@@ -8,10 +8,10 @@ PHP_FUNCTION(mmap_open);
 extern zend_module_entry mmap_module_entry;
 #define phpext_mmap_ptr &mmap_module_entry
 
-size_t mmap_write(php_stream * stream, char *buf, size_t count TSRMLS_DC);size_t mmap_read(php_stream *stream, char *buf, size_t count TSRMLS_DC);int mmap_flush(php_stream *stream TSRMLS_DC);int mmap_seek(php_stream *stream, off_t offset, int whence, off_t *newoffset TSRMLS_DC);
-int mmap_close(php_stream *stream, int close_handle TSRMLS_DC);
+size_t mmap_stream_write(php_stream *stream, char *buffer, size_t length TSRMLS_DC);size_t mmap_stream_read(php_stream *stream, char *buffer, size_t length TSRMLS_DC);int mmap_stream_flush(php_stream *stream TSRMLS_DC);int mmap_stream_seek(php_stream *stream, off_t offset, int whence, off_t *newoffset TSRMLS_DC);
+int mmap_stream_close(php_stream *stream, int close_handle TSRMLS_DC);
 
 struct mmap_stream_data { 
-	void *base_pos;	void *current_pos;	int len;};
+	void *base_offset;	void *current_offset;	int length;};
 
 #endif
