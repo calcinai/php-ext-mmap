@@ -93,7 +93,6 @@ int mmap_stream_seek(php_stream *stream, off_t offset, int whence, off_t *newoff
             }
             data->current_offset = data->base_offset + offset; *newoffset = offset;
             return 0;
-            break;
         case SEEK_CUR:
             if(data->current_offset + offset < data->base_offset || data->current_offset + offset > data->base_offset + data->length){
                 *newoffset = (off_t) -1;
@@ -102,7 +101,6 @@ int mmap_stream_seek(php_stream *stream, off_t offset, int whence, off_t *newoff
             data->current_offset += offset;
             *newoffset = data->current_offset - data->base_offset; 
             return 0;
-            break;
         case SEEK_END:
             if(offset > 0 || -1 * offset > data->length) {
                 *newoffset = (off_t) -1;
@@ -111,7 +109,6 @@ int mmap_stream_seek(php_stream *stream, off_t offset, int whence, off_t *newoff
             data->current_offset += offset;
             *newoffset = data->current_offset - data->base_offset; 
             return 0;
-            break;
         default:
             *newoffset = (off_t) -1;
             return -1; 
