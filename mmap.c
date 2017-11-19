@@ -49,7 +49,7 @@ php_stream_ops mmap_ops = {
 
 
 
-size_t mmap_stream_write(php_stream * stream, char *buffer, size_t length TSRMLS_DC) {
+size_t mmap_stream_write(php_stream *stream, const char *buffer, size_t length TSRMLS_DC) {
     int to_write;
     struct mmap_stream_data *data = stream->abstract;
     
@@ -82,7 +82,7 @@ int mmap_stream_flush(php_stream *stream TSRMLS_DC) {
 }
 
 
-int mmap_stream_seek(php_stream *stream, off_t offset, int whence, off_t *newoffset TSRMLS_DC) {
+int mmap_stream_seek(php_stream *stream, zend_off_t offset, int whence, zend_off_t *newoffset) {
     struct mmap_stream_data *data = stream->abstract; 
     
     switch(whence) {
